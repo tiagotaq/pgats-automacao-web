@@ -20,3 +20,12 @@ jobs:
 
       - name: Executando os testes
         run: npx cypress run
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: relatorios
+          path: |
+            cypress/reports
+            cypress/screenshots
+            cypress/videos
